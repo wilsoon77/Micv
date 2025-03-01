@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Animaciones de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Clases de animación */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+/* Navbar */
+.navbar {
+  backdrop-filter: blur(10px);
+  background-color: rgba(17, 24, 39, 0.8);
+}
+
+.navbar-link {
+  position: relative;
+  color: #e5e7eb;
+  transition: color 0.3s ease;
+}
+
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #60A5FA;
+  transition: width 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: #60A5FA;
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+}
+
+/* Efectos de hover y transiciones */
+.skill-tag {
+  transition: all 0.3s ease;
+  background: rgba(31, 41, 55, 0.9);
+  border: 1px solid #4B5563;
+  color: #e5e7eb;
+}
+
+.skill-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-color: #60A5FA;
+}
+
+.experience-card {
+  transition: all 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gradientes y efectos visuales */
+.gradient-bg {
+  background: linear-gradient(135deg, #1F2937 0%, #1E3A8A 100%);
+}
+
+.profile-image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-image-container::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #60A5FA, #3B82F6);
+  z-index: -1;
+  opacity: 0.5;
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
