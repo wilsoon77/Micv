@@ -2,9 +2,9 @@
 const cvData = {
   personalInfo: {
     name: "Wilson Adolfo Coc Avila",
-    title: "Desarrollador Web Full Stack",
-    email: "correo@ejemplo.com",
-    phone: "+1234567890",
+    title: "Desarrollador Web",
+    email: "wilsoncoc5678@gmail.com",
+    phone: "+502 35989374",
     image: "https://t4.ftcdn.net/jpg/04/09/86/15/360_F_409861532_l6vKbJSMetiiBt62XclpiKRvO7LZ7hCj.jpg"
   },
   experience: [
@@ -25,15 +25,15 @@ const cvData = {
   ],
   education: [
     {
-      degree: "Máster en Desarrollo Web",
-      school: "Universidad Tecnológica",
-      period: "2016 - 2018",
+      degree: "Ingeniería en Sistemas",
+      school: "Universidad Mariano Gálvez de Guatemala",
+      period: "2022 - Actualidad",
       icon: "fa-university"
     },
     {
-      degree: "Grado en Informática",
-      school: "Universidad Nacional",
-      period: "2012 - 2016",
+      degree: "Carrera: Perito en informática ",
+      school: "CETACH no.2",
+      period: "2019 - 2021",
       icon: "fa-graduation-cap"
     }
   ],
@@ -43,7 +43,7 @@ const cvData = {
     { name: "Bootstrap", icon: "fa-bootstrap", color: "text-purple-500", type: "fa" },
     { 
       name: "Tailwind", 
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg", 
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg", 
       color: "text-blue-400", 
       type: "svg" 
     },
@@ -57,7 +57,7 @@ const cvData = {
       color: "text-blue-600", 
       type: "svg" 
     },
-    { name: "C++", icon: "fa-code", color: "text-blue-500", type: "fa" },
+    { name: "C++", icon: "https://cdn.worldvectorlogo.com/logos/c.svg", color: "text-blue-500", type: "svg" },
     { name: "Java", icon: "fa-java", color: "text-red-600", type: "fa" },
     { 
       name: "SQL Server", 
