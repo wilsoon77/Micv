@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Loader */
+#loader {
+  transition: opacity 0.5s ease-out;
+  background-color: rgba(17, 24, 39, 0.95);
+}
+
+/* Notificación personalizada */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  color: white;
+  transform: translateX(150%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.notification.show {
+  transform: translateX(0);
+}
+
+.notification.success {
+  background-color: #34D399;
+  box-shadow: 0 4px 6px rgba(52, 211, 153, 0.2);
+}
+
+.notification.error {
+  background-color: #EF4444;
+  box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
+}
+
 /* Animaciones de entrada */
 @keyframes fadeInUp {
   from {
@@ -88,6 +121,23 @@
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
+/* Proyectos */
+.project-card {
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card img {
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
 /* Scroll reveal */
 .reveal {
   opacity: 0;
@@ -122,6 +172,16 @@
   z-index: -1;
   opacity: 0.5;
   animation: rotate 4s linear infinite;
+}
+
+/* Formulario de contacto */
+input, textarea {
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes rotate {

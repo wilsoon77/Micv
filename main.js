@@ -1,3 +1,5 @@
+import emailjs from '@emailjs/browser';
+
 // Datos del CV
 const cvData = {
   personalInfo: {
@@ -5,24 +7,8 @@ const cvData = {
     title: "Desarrollador Web",
     email: "wilsoncoc5678@gmail.com",
     phone: "+502 35989374",
-    image: "https://t4.ftcdn.net/jpg/04/09/86/15/360_F_409861532_l6vKbJSMetiiBt62XclpiKRvO7LZ7hCj.jpg"
+    image: "https://i.imgur.com/7DwQLwo.jpeg"
   },
-  experience: [
-    {
-      title: "Desarrollador Senior",
-      company: "Empresa Tech",
-      period: "2020 - Presente",
-      description: "Desarrollo de aplicaciones web utilizando las últimas tecnologías.",
-      icon: "fa-code"
-    },
-    {
-      title: "Desarrollador Web",
-      company: "Startup Innovadora",
-      period: "2018 - 2020",
-      description: "Creación de sitios web responsivos y mantenimiento de aplicaciones existentes.",
-      icon: "fa-laptop-code"
-    }
-  ],
   education: [
     {
       degree: "Ingeniería en Sistemas",
@@ -73,8 +59,88 @@ const cvData = {
     },
     { name: "Git", icon: "fa-git-alt", color: "text-red-500", type: "fa" },
     { name: "GitHub", icon: "fa-github", color: "text-white", type: "fa" }
+  ],
+  projects: [
+    {
+      title: "Página Curriculum Vitae",
+      description: "Página web de curriculum vitae con HTML, CSS y JavaScript",
+      image: "https://i.imgur.com/Q3Dueqr.png",
+      technologies: ["HTML", "CSS", "JavaScript", "Tailwind CSS"],
+      demoUrl: "#",
+      githubUrl: "https://github.com/wilsoon77/Micv"
+    },
+    {
+      title: "Proyecto Ferretería con Carrito de Compras",
+      description: "Ferretería API Rest con Spring Boot y Java como Backend y Angular para el Frontend",
+      image: "https://i.imgur.com/thYFdvN.png",
+      technologies: ["Angular", "TypeScript", "Spring Boot", "MySql", "Java", "HTML", "CSS", "JavaScript"],
+      demoUrl: "#",
+      githubUrl: "https://github.com/wilsoon77/FERRETERIA-FINAL-PROJECT"
+    },
+    {
+      title: "Aplicación Escritorio De Gestion De una Ferretería",
+      description: "Sistema POS (Punto de Venta) diseñado para una ferretería. Cuenta con un CRUD, generador de reportes y gráfica de las ventas realizadas.",
+      image: "https://i.imgur.com/FOHjPbe.png",
+      technologies: ["Java", "MySql", "Netbeans"],
+      demoUrl: "#",
+      githubUrl: "https://github.com/wilsoon77/Ferreteria-project"
+    },
+    {
+      title: "Sistema de Administración y Gestión De Un Colegio",
+      description: "Proyecto colaborativo para la gestión escolar. Incluye validaciones y funcionalidades generales. Desarrollado con Java y SQL Server.",
+      image: "https://i.imgur.com/2FF33RY.png",
+      technologies: ["Java", "Netbeans", "SQL Server", "Tabajo Colaborativo"],
+      demoUrl: "#",
+      githubUrl: "https://github.com/lester-yat/colegio-java"
+    },
+    {
+      title: "Próximos Proyectos..",
+      description: "Más proyectos en desarrollo, que se iran añadiendo a este portafolio.",
+      image: "https://bernekrausen.com/wp-content/uploads/2023/10/page-underconstruction1.jpg",
+      technologies: ["Se revelarán próximamente"],
+      demoUrl: "#",
+      githubUrl: "#"
+    }
   ]
 };
+
+// Configuración de EmailJS
+emailjs.init("u6Ra1bqeXCRPdr7Mg");
+
+// Función para mostrar notificación
+function showNotification(message, type) {
+  const notification = document.getElementById('notification');
+  const notificationMessage = document.getElementById('notification-message');
+  
+  notification.className = `notification ${type}`;
+  notificationMessage.textContent = message;
+  
+  // Mostrar notificación
+  setTimeout(() => {
+    notification.classList.add('show');
+  }, 100);
+  
+  // Ocultar notificación después de 3 segundos
+  setTimeout(() => {
+    notification.classList.remove('show');
+  }, 3000);
+}
+
+// Función para mostrar el loader
+function showLoader() {
+  const loader = document.getElementById('loader');
+  loader.style.display = 'flex';
+}
+
+// Función para ocultar el loader
+function hideLoader() {
+  const loader = document.getElementById('loader');
+  loader.style.opacity = '0';
+  loader.style.transition = 'opacity 0.5s ease-out';
+  setTimeout(() => {
+    loader.style.display = 'none';
+  }, 500);
+}
 
 // Función para actualizar la información personal
 function updatePersonalInfo() {
@@ -83,31 +149,10 @@ function updatePersonalInfo() {
   document.getElementById('email').textContent = cvData.personalInfo.email;
   document.getElementById('phone').textContent = cvData.personalInfo.phone;
   document.getElementById('profile-image').src = cvData.personalInfo.image;
-}
-
-// Función para crear la lista de experiencia
-function createExperienceList() {
-  const experienceList = document.getElementById('experience-list');
-  // Verificar si el elemento existe antes de intentar modificarlo
-  if (!experienceList) return;
   
-  experienceList.innerHTML = cvData.experience.map((exp, index) => `
-    <div class="experience-card mb-6 p-6 rounded-lg border border-gray-700 hover:border-blue-700 animate-slide-in" style="animation-delay: ${index * 0.2}s">
-      <div class="flex items-start">
-        <div class="mr-4">
-          <i class="fas ${exp.icon} text-2xl text-blue-400"></i>
-        </div>
-        <div>
-          <h3 class="text-xl font-semibold text-white">${exp.title}</h3>
-          <p class="text-blue-400 mb-2">${exp.company}</p>
-          <p class="text-gray-400 text-sm mb-2">
-            <i class="far fa-calendar-alt mr-2"></i>${exp.period}
-          </p>
-          <p class="text-gray-300">${exp.description}</p>
-        </div>
-      </div>
-    </div>
-  `).join('');
+  // Actualizar información de contacto
+  document.getElementById('contact-email').textContent = cvData.personalInfo.email;
+  document.getElementById('contact-phone').textContent = cvData.personalInfo.phone;
 }
 
 // Función para crear la lista de educación
@@ -135,7 +180,6 @@ function createEducationList() {
 function createSkillsList() {
   const skillsList = document.getElementById('skills-list');
   skillsList.innerHTML = cvData.skills.map((skill, index) => {
-    // Determinar si es un icono de Font Awesome o una imagen SVG
     const iconElement = skill.type === 'fa' 
       ? `<i class="fab ${skill.icon} mr-2 ${skill.color}"></i>`
       : `<img src="${skill.icon}" alt="${skill.name}" class="w-5 h-5 mr-2" />`;
@@ -148,6 +192,44 @@ function createSkillsList() {
       </div>
     `;
   }).join('');
+}
+
+// Función para crear la lista de proyectos
+
+/* 
+* <a href="${project.demoUrl}" target="_blank" 
+*             class="text-blue-400 hover:text-blue-300 transition-colors">
+*            <i class="fas fa-external-link-alt mr-2"></i>Demo
+*          </a>
+*/
+
+function createProjectsList() {
+  const projectsList = document.getElementById('projects-list');
+  projectsList.innerHTML = cvData.projects.map((project, index) => `
+    <div class="project-card bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 animate-fade-in-up" 
+         style="animation-delay: ${index * 0.2}s">
+      <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold text-white mb-2">${project.title}</h3>
+        <p class="text-gray-300 mb-4">${project.description}</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          ${project.technologies.map(tech => `
+            <span class="px-2 py-1 bg-gray-600 text-sm text-gray-300 rounded">${tech}</span>
+          `).join('')}
+        </div>
+        <div class="flex justify-between">
+        
+         
+          
+          <a href="${project.githubUrl}" target="_blank" 
+             class="text-blue-400 hover:text-blue-300 transition-colors">
+            <i class="fab fa-github mr-2"></i>Código
+            <i class="fas fa-external-link-alt mr-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  `).join('');
 }
 
 // Función para manejar las animaciones de scroll
@@ -240,19 +322,60 @@ function initParticles() {
   animate();
 }
 
+// Función para manejar el envío del formulario de contacto
+function handleContactForm() {
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    try {
+      showLoader();
+      
+      const result = await emailjs.sendForm(
+        'service_rbk2uty',
+        'template_qj3qq26',
+        form
+      );
+      
+      if (result.text === 'OK') {
+        showNotification('¡Mensaje enviado con éxito! Gracias por contactarme.', 'success');
+        form.reset();
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      showNotification('Error al enviar el mensaje. Por favor, intenta nuevamente.', 'error');
+    } finally {
+      hideLoader();
+    }
+  });
+}
+
 // Inicializar el CV
-function initCV() {
-  updatePersonalInfo();
-  createExperienceList();
-  createEducationList();
-  createSkillsList();
-  handleSmoothScroll();
-  initParticles();
+async function initCV() {
+  showLoader();
   
-  // Agregar listener para las animaciones de scroll
-  window.addEventListener('scroll', handleScrollAnimations);
-  // Trigger inicial para elementos visibles
-  handleScrollAnimations();
+  try {
+    await Promise.all([
+      updatePersonalInfo(),
+      createEducationList(),
+      createSkillsList(),
+      createProjectsList(),
+      handleSmoothScroll(),
+      initParticles(),
+      handleContactForm()
+    ]);
+    
+    // Agregar listener para las animaciones de scroll
+    window.addEventListener('scroll', handleScrollAnimations);
+    // Trigger inicial para elementos visibles
+    handleScrollAnimations();
+  } catch (error) {
+    console.error('Error initializing CV:', error);
+  
+  } finally {
+    // Ocultar el loader después de un pequeño delay para asegurar que todo esté cargado
+    setTimeout(hideLoader, 1000);
+  }
 }
 
 // Cargar el CV cuando el documento esté listo
