@@ -350,6 +350,13 @@ function handleContactForm() {
   });
 }
 
+//funcion para el menu desplegable
+document.getElementById('menu-button').addEventListener('click', function() {
+  const mobileMenu = document.getElementById('mobile-menu');
+  mobileMenu.classList.toggle('hidden');
+});
+
+
 // Inicializar el CV
 async function initCV() {
   showLoader();
