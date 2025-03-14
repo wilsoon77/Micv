@@ -7,7 +7,7 @@ const cvData = {
     title: "Desarrollador Web",
     email: "wilsoncoc5678@gmail.com",
     phone: "+502 35989374",
-    image: "https://i.imgur.com/7DwQLwo.jpeg"
+    image: "https://i.imgur.com/kkTJaSB.jpeg"
   },
   education: [
     {
