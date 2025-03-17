@@ -1,173 +1,185 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/1005/1005141.png" />
     <title>Mi CV</title>
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Font Awesome para iconos -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/128/1005/1005141.png"
+    />
   </head>
-  <body class="bg-gradient-to-br from-gray-900 to-blue-900 transition-colors duration-200">
+  <body>
     <!-- Loader -->
-    <div id="loader" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900">
-      <div class="loader-content text-center">
-        <div class="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-blue-500"></div>
-        <p class="text-blue-500 mt-4 text-xl font-semibold">Cargando...</p>
+    <div id="loader">
+      <div class="loader-content">
+        <div class="loader-spinner"></div>
+        <p>Cargando...</p>
       </div>
     </div>
 
     <!-- Notificación personalizada -->
-    <div id="notification" class="notification">
+    <div id="notification">
       <span id="notification-message"></span>
     </div>
 
-    <canvas id="particles" class="fixed top-0 left-0 w-full h-full pointer-events-none"></canvas>
-    
-    <!-- Header principal -->
+    <!-- Fondo de partículas -->
+    <canvas id="particles"></canvas>
+
+    <!-- Header y Navegación -->
     <header>
-      <nav class="navbar fixed top-0 w-full z-40 px-4 py-3 shadow-sm">
-        <div class="container mx-auto flex justify-between items-center">
-          <div class="text-xl font-bold text-blue-400">Mi CV</div>
-          <div class="space-x-6 hidden md:flex">
-            <a href="#about" class="navbar-link">Sobre mí</a>
-            <a href="#education" class="navbar-link">Educación</a>
-            <a href="#skills" class="navbar-link">Habilidades</a>
-            <a href="#projects" class="navbar-link">Proyectos</a>
-            <a href="#contact" class="navbar-link">Contacto</a>
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="logo">Mi CV</div>
+          <div class="nav-links">
+            <a href="#about">Sobre mí</a>
+            <a href="#education">Educación</a>
+            <a href="#skills">Habilidades</a>
+            <a href="#projects">Proyectos</a>
+            <a href="#contact">Contacto</a>
           </div>
-          <button id="menu-button" class="md:hidden text-blue-400 focus:outline-none">
-            <i class="fas fa-bars text-2xl"></i>
+          <button id="menu-button" aria-label="Menu">
+            <i class="fas fa-bars"></i>
           </button>
         </div>
       </nav>
-      <div id="mobile-menu" class="hidden md:hidden">
-        <a href="#about" class="block px-4 py-2">Sobre mí</a>
-        <a href="#education" class="block px-4 py-2">Educación</a>
-        <a href="#skills" class="block px-4 py-2">Habilidades</a>
-        <a href="#projects" class="block px-4 py-2">Proyectos</a>
-        <a href="#contact" class="block px-4 py-2">Contacto</a>
+      <div id="mobile-menu" class="hidden">
+        <a href="#about">Sobre mí</a>
+        <a href="#education">Educación</a>
+        <a href="#skills">Habilidades</a>
+        <a href="#projects">Proyectos</a>
+        <a href="#contact">Contacto</a>
       </div>
     </header>
 
-    <!-- Main content -->
-    <main class="container mx-auto px-4 py-20 max-w-4xl">
-      <!-- About section -->
-      <section id="about" class="bg-gray-800 shadow-lg rounded-lg p-8 mb-6 reveal">
-        <div class="flex flex-col md:flex-row items-center md:items-start mb-6 animate-fade-in-up">
-          <div class="profile-image-container mb-4 md:mb-0 md:mr-6">
-            <img id="profile-image" src="" alt="Foto de perfil" class="w-32 h-32 rounded-full">
+    <!-- Contenido principal -->
+    <main class="container">
+      <!-- Sección Sobre mí -->
+      <section id="about" class="section reveal">
+        <div class="profile-container">
+          <div class="profile-image-container">
+            <img id="profile-image" src="" alt="Foto de perfil" />
           </div>
-          <div class="flex flex-col justify-center">
-            <h2 class="text-2xl font-bold text-blue-400 mb-2 text-center md:text-left">¡Bienvenido a mi Pagina Web - Curriculum!</h2>
-            <h1 id="name" class="text-3xl font-bold text-white mb-2 text-center md:text-left"></h1>
-            <p id="title" class="text-xl text-blue-400 mb-4 text-center md:text-left"></p>
-            <div class="flex justify-center md:justify-start space-x-6">
-              <div class="flex items-center">
-                <i class="fas fa-envelope text-blue-400 mr-2"></i>
-                <p id="email" class="text-gray-300"></p>
+          <div class="profile-info">
+            <h2>¡Bienvenido a mi Pagina Web - Curriculum!</h2>
+            <h1 id="name"></h1>
+            <p id="title" class="subtitle"></p>
+            <div class="contact-info">
+              <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <p id="email"></p>
               </div>
-              <div class="flex items-center">
-                <i class="fas fa-phone text-blue-400 mr-2"></i>
-                <p id="phone" class="text-gray-300"></p>
+              <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <p id="phone"></p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Education section -->
-      <section id="education" class="bg-gray-800 shadow-lg rounded-lg p-8 mb-6 reveal">
-        <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
-          <i class="fas fa-graduation-cap text-blue-400 mr-3"></i>
+      <!-- Sección Educación -->
+      <section id="education" class="section reveal">
+        <h2 class="section-title">
+          <i class="fas fa-graduation-cap"></i>
           Educación
         </h2>
-        <div id="education-list">
-          <!-- La educación se agregará aquí dinámicamente -->
-        </div>
+        <div id="education-list"></div>
       </section>
 
-      <!-- Skills section -->
-      <section id="skills" class="bg-gray-800 shadow-lg rounded-lg p-8 mb-6 reveal">
-        <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
-          <i class="fas fa-code text-blue-400 mr-3"></i>
+      <!-- Sección Habilidades -->
+      <section id="skills" class="section reveal">
+        <h2 class="section-title">
+          <i class="fas fa-code"></i>
           Habilidades
         </h2>
-        <div id="skills-list" class="flex flex-wrap gap-3">
-          <!-- Las habilidades se agregarán aquí dinámicamente -->
-        </div>
+        <div id="skills-list"></div>
       </section>
 
-      <!-- Projects section -->
-      <section id="projects" class="bg-gray-800 shadow-lg rounded-lg p-8 mb-6 reveal">
-        <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
-          <i class="fas fa-laptop-code text-blue-400 mr-3"></i>
+      <!-- Sección Proyectos -->
+      <section id="projects" class="section reveal">
+        <h2 class="section-title">
+          <i class="fas fa-laptop-code"></i>
           Proyectos
         </h2>
-        <div id="projects-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Los proyectos se agregarán aquí dinámicamente -->
-        </div>
+        <div id="projects-list"></div>
       </section>
 
-      <!-- Contact section -->
-      <section id="contact" class="bg-gray-800 shadow-lg rounded-lg p-8 reveal">
-        <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
-          <i class="fas fa-envelope text-blue-400 mr-3"></i>
+      <!-- Sección Contacto -->
+      <section id="contact" class="section reveal">
+        <h2 class="section-title">
+          <i class="fas fa-envelope"></i>
           Contacto
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Información de contacto -->
-          <div class="space-y-4">
-            <h3 class="text-xl font-semibold text-white mb-4">Información de Contacto</h3>
-            <div class="flex items-center space-x-3">
-              <i class="fas fa-map-marker-alt text-blue-400"></i>
-              <p class="text-gray-300">Guatemala, Guatemala</p>
+        <div class="contact-container">
+          <div class="contact-info-section">
+            <h3>Información de Contacto</h3>
+            <div class="contact-details">
+              <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Guatemala, Guatemala</p>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <p id="contact-email"></p>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <p id="contact-phone"></p>
+              </div>
+              <div class="info-item">
+                <i class="fab fa-github"></i>
+                <a href="https://github.com/wilsoon77" target="_blank"
+                  >github.com/wilsoon77</a>
+              </div>
             </div>
-            <div class="flex items-center space-x-3">
-              <i class="fas fa-envelope text-blue-400"></i>
-              <p class="text-gray-300" id="contact-email"></p>
-            </div>
-            <div class="flex items-center space-x-3">
-              <i class="fas fa-phone text-blue-400"></i>
-              <p class="text-gray-300" id="contact-phone"></p>
-            </div>
-            <div class="flex items-center space-x-3">
-              <i class="fab fa-github text-blue-400"></i>
-              <a href="https://github.com/wilsoon77" target="_blank" class="text-gray-300 hover:text-blue-400 transition-colors">github.com/wilsoon77</a>
-            </div>
-            
           </div>
-          
-          <!-- Formulario de contacto -->
-          <form id="contact-form" class="space-y-4">
-            <div>
-              <label for="name" class="block text-gray-300 mb-2">Nombre</label>
-              <input type="text" id="contact-name" name="from_name" required class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-blue-400 focus:outline-none">
-            </div>
-            <div>
-              <label for="email" class="block text-gray-300 mb-2">Email</label>
-              <input type="email" id="contact-email-input" name="from_email" required class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-blue-400 focus:outline-none">
-            </div>
-            <div>
-              <label for="message" class="block text-gray-300 mb-2">Mensaje</label>
-              <textarea id="message" name="message" required rows="4" class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-blue-400 focus:outline-none"></textarea>
-            </div>
-            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
-              Enviar Mensaje
-            </button>
-          </form>
+
+          <div class="contact-form-section">
+            <h3>Envíame un mensaje</h3>
+            <form id="contact-form">
+              <div class="form-group">
+                <label for="contact-name">Nombre</label>
+                <input type="text" id="contact-name" name="from_name" required />
+              </div>
+              <div class="form-group">
+                <label for="contact-email-input">Email</label>
+                <input
+                  type="email"
+                  id="contact-email-input"
+                  name="from_email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <button type="submit">Enviar Mensaje</button>
+            </form>
+          </div>
         </div>
       </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 py-8 mt-12">
-      <div class="container mx-auto px-4 text-center">
-        <p>&copy; 2025 Wilson Adolfo Coc Avila. Todos los derechos reservados.</p>
-       
+    <footer>
+      <div class="container">
+        <p>
+          &copy; 2025 Wilson Adolfo Coc Avila. Todos los derechos reservados.
+        </p>
       </div>
     </footer>
 
-    <script type="module" src="/main.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
