@@ -80,7 +80,7 @@ const cvData = {
     {
       title: 'Página Curriculum Vitae',
       description: 'Página web de curriculum vitae con HTML, CSS y JavaScript',
-      image: 'blob:https://imgur.com/1f2014b7-9580-4bc5-9c00-9e147b47443d',
+      image: 'https://i.imgur.com/veTcE1r.png',
       technologies: ['HTML', 'CSS', 'JavaScript'],
       demoUrl: '#',
       githubUrl: 'https://github.com/wilsoon77/Micv',
