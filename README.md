@@ -1,10 +1,10 @@
 # Mi Portfolio Personal
 
-Este es mi portfolio personal, una página web responsive que muestra mi experiencia, habilidades y proyectos. Está construido con HTML, CSS y JavaScript vanilla (Sin ningun uso de Framework).
+Este es mi portfolio personal, una página web responsive que muestra mi educación, habilidades y proyectos. Está construido con HTML, CSS y JavaScript vanilla (Sin ningun uso de Framework).
 
 ## 🚀 Características
 
-- Diseño totalmente responsive
+- Diseño totalmente responsive para distintos dispositivos
 - Animaciones y transiciones
 - Menú de navegación adaptable
 - Formulario de contacto funcional con EmailJS
@@ -75,7 +75,7 @@ git clone https://github.com/wilsoon77/Micv.git
 
 ## 🔧 Mantenimiento
 
-Para mantener el código:
+Para mantener el código y hacer cambios o mejoras futuras:
 
 1. Esta el README y ademas todo el codigo tiene comentarios para facilitar sus cambios
 2. Revisa la compatibilidad con navegadores
